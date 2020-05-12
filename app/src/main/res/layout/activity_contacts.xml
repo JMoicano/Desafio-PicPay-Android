@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:layout_gravity="bottom"
-        android:hint="asdlkasnçldknsal0dçk"
+        android:hint="@string/contacts_search_view_hint"
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom"/>
 
