@@ -1,0 +1,85 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+apply from: '../dependencies.gradle'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+
+    defaultConfig {
+        applicationId "com.example.desafiopicpay"
+        minSdkVersion 22
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            testCoverageEnabled true
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+    }
+
+    flavorDimensions "default"
+    productFlavors {
+        dev {
+            dimension "default"
+            buildConfigField "String", "BASE_URL", "\"http://careers.picpay.com/tests/mobdev\""
+        }
+    }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+    dataBinding {
+        enabled = true
+    }
+    dependencies {
+        implementation fileTree(dir: 'libs', include: ['*.jar'])
+        implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+        implementation 'androidx.appcompat:appcompat:1.1.0'
+        implementation 'androidx.core:core-ktx:1.2.0'
+        implementation 'com.google.android.material:material:1.1.0'
+        testImplementation 'junit:junit:4.12'
+        androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+        androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+
+        // Koin
+        implementation "org.koin:koin-android:$project.koinVersion"
+        implementation "org.koin:koin-androidx-scope:$project.koinVersion"
+        implementation "org.koin:koin-androidx-viewmodel:$project.koinVersion"
+
+        // Glide
+        implementation "com.github.bumptech.glide:glide:$project.glideVersion"
+        implementation "com.github.bumptech.glide:okhttp3-integration:$project.glideVersion"
+
+        // OkHttp
+        implementation "com.squareup.okhttp3:logging-interceptor:$project.okHttpVersion"
+        implementation "com.squareup.okhttp3:okhttp:$project.okHttpVersion"
+
+        // Retrofit
+        implementation "com.squareup.retrofit2:retrofit:$project.retrofitVersion"
+        implementation "com.squareup.retrofit2:converter-moshi:$project.retrofitVersion"
+        implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$project.retrofitAdapterVersion"
+        implementation "com.squareup.retrofit2:retrofit-mock:$project.retrofitMockVersion"
+
+        // Moshi
+        implementation "com.squareup.moshi:moshi-kotlin:$project.moshiVersion"
+    }
+
+}
+

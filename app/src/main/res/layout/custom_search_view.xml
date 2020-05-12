@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Space
+        android:id="@+id/customSearchViewStartSpace"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <ImageView
+        android:id="@+id/customSearchViewSearchIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_search"
+        android:layout_marginStart="20dp"
+        android:contentDescription="@null" />
+
+    <EditText
+        android:id="@+id/customSearchViewSearchBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:inputType="text"
+        android:autofillHints="name"
+        android:imeOptions="actionSearch"
+        android:layout_weight="1"
+        style="@style/SeachView"/>
+
+    <ImageView
+        android:id="@+id/customSearchViewCloseIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_close"
+        android:layout_marginEnd="20dp"
+        android:contentDescription="@string/custom_search_view_cancel_description"/>
+
+    <Space
+        android:id="@+id/customSearchViewEndSpace"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+</merge>
