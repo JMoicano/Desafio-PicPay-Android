@@ -79,6 +79,10 @@ android {
 
         // Moshi
         implementation "com.squareup.moshi:moshi-kotlin:$project.moshiVersion"
+
+        // Design
+        implementation "androidx.constraintlayout:constraintlayout:$project.constraintLayoutVersion"
+        implementation "com.google.android.material:material:$project.materialVersion"
     }
 
 }
