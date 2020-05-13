@@ -18,6 +18,6 @@ project.ext {
     moshiVersion = "1.8.0"
 
     // Design
-    constraintLayoutVersion = "2.0.0-beta4"
-    materialVersion = "1.2.0-alpha02"
+    constraintLayoutVersion = "2.0.0-beta5"
+    materialVersion = "1.2.0-alpha06"
 }

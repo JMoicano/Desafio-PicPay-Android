@@ -17,11 +17,14 @@
 
         <ImageView
             android:id="@+id/contactItemAvatar"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             app:circular_image_by_url="@{user.img}"
-            tools:src="@drawable/avatar"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="w,1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/avatar" />
 
         <TextView
             android:id="@+id/contactItemUsername"

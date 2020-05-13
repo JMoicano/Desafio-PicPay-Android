@@ -1,4 +1,4 @@
-package com.jmoicano.desafiopicpay.views
+package com.jmoicano.desafiopicpay.views.extensions
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
@@ -10,5 +10,6 @@ fun ImageView.circularImageByUrl(url: String) {
     Glide.with(this)
         .load(url)
         .apply(RequestOptions.circleCropTransform())
+        .placeholder(android.R.drawable.ic_menu_camera)
         .into(this)
 }
