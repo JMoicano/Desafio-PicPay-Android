@@ -1,4 +1,4 @@
-package com.jmoicano.desafiopicpay.app.contacts
+package com.jmoicano.desafiopicpay.app.contacts.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -64,7 +64,7 @@ class UserAdapter(val clickListener: (User) -> Unit) :
         override fun performFiltering(constraint: CharSequence?): FilterResults {
             return FilterResults().apply {
                 val filteredResults = if (!constraint.isNullOrBlank()) {
-                    users.filter { item ->
+                    originalList.filter { item ->
                         item.name.contains(constraint, true)
                         item.username.contains(constraint, true)
 

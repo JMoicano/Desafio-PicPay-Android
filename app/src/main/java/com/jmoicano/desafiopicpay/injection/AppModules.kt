@@ -1,5 +1,8 @@
 package com.jmoicano.desafiopicpay.injection
 
 val appModules = listOf(
-    networkModule
+    networkModule,
+    apiModule,
+    repositoryModule,
+    viewModelModule
 )
