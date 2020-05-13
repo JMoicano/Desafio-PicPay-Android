@@ -21,6 +21,7 @@ class UserAdapter(val clickListener: (User) -> Unit) :
     var items: List<User>
         get() = users
         set(value) {
+            users.clear()
             users.addAll(value)
             notifyDataSetChanged()
         }

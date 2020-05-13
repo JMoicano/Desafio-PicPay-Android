@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import com.jmoicano.desafiopicpay.R
 import com.jmoicano.desafiopicpay.app.contacts.adapters.UserAdapter
 import com.jmoicano.desafiopicpay.app.contacts.viewmodels.ContactViewModel
+import com.jmoicano.desafiopicpay.app.creditcard.CreditCardPrimingActivity.Companion.startCreditCardPriming
 import com.jmoicano.desafiopicpay.databinding.ActivityContactsBinding
 import com.jmoicano.desafiopicpay.handlers.ViewState
 import kotlinx.android.synthetic.main.activity_contacts.*
@@ -19,7 +20,7 @@ class ContactsActivity : AppCompatActivity() {
 
     private val adapter by lazy {
         UserAdapter { selectedUser ->
-            TODO("not implemented function")
+            startCreditCardPriming(selectedUser)
         }
     }
 

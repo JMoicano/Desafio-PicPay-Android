@@ -7,11 +7,11 @@
     android:background="@color/colorPrimary"
     tools:context="com.jmoicano.desafiopicpay.app.creditcard.CreditCardPrimingActivity">
 
-    <Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/creditCardPrimingToolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:navigationIcon="@drawable/ic_back"
+        app:navigationIcon="@drawable/ic_back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -61,6 +61,7 @@
         app:layout_constraintVertical_chainStyle="packed" />
 
     <Button
+        android:id="@+id/creditCardPrimingCardButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="18dp"
@@ -71,6 +72,6 @@
         android:textColor="@android:color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/creditCardPrimingToolbar"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
