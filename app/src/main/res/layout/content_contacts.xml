@@ -6,13 +6,15 @@
     android:layout_height="match_parent"
     android:layout_marginTop="50dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".app.contacts.ContactsActivity"
+    tools:context=".app.contacts.activities.ContactsActivity"
     tools:showIn="@layout/activity_contacts">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/contactsUserList"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:text="@string/large_text" />
-
+        android:paddingHorizontal="20dp"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/contact_item"/>
 </androidx.core.widget.NestedScrollView>

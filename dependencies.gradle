@@ -1,5 +1,11 @@
 project.ext {
 
+    // AndroidX google architecture components
+    lifecycleVersion = "2.2.0"
+
+    // Coroutines
+    coroutinesVersion = "1.2.1"
+
     // Koin
     koinVersion = "2.1.5"
 
@@ -16,4 +22,8 @@ project.ext {
 
     // Moshi
     moshiVersion = "1.8.0"
+
+    // Design
+    constraintLayoutVersion = "2.0.0-beta5"
+    materialVersion = "1.2.0-alpha06"
 }

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="user"
+            type="com.jmoicano.desafiopicpay.api.user.models.User" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="12dp">
+
+        <ImageView
+            android:id="@+id/contactItemAvatar"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:circular_image_by_url="@{user.img}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="w,1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/avatar" />
+
+        <TextView
+            android:id="@+id/contactItemUsername"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{user.username}"
+            tools:text="\@zelda.williams"
+            android:textSize="16sp"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/contactItemAvatar"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/contactItemName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{user.name}"
+            tools:text="Zelda Williams"
+            android:textSize="14sp"
+            android:textColor="@color/searchViewUnfocusedTextColor"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/contactItemAvatar"
+            app:layout_constraintTop_toBottomOf="@id/contactItemUsername" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
