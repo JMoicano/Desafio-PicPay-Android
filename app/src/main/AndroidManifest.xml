@@ -4,15 +4,16 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <application
+        android:name=".app.DesafioPicPayApplication"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:name=".app.DesafioPicPayApplication"
         android:usesCleartextTraffic="true">
+        <activity android:name=".app.creditcard.CreditCardPrimingActivity"></activity>
         <activity
-            android:name="com.jmoicano.desafiopicpay.app.contacts.activities.ContactsActivity"
+            android:name=".app.contacts.activities.ContactsActivity"
             android:label="@string/title_activity_contacts"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
