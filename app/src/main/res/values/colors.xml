@@ -6,4 +6,9 @@
 
     <color name="searchViewBackgroundColor">#2B2C2F</color>
     <color name="searchViewUnfocusedTextColor">#ACB1BD</color>
+
+    <color name="disabledButtonBackgorundColor">#8F929D</color>
+    <color name="pressedButtonBackgorundColor">#AA11C76F</color>
+
+    <color name="hintTextColor">#66FFFFFF</color>
 </resources>
