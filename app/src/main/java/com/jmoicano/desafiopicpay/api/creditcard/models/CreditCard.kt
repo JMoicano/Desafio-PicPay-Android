@@ -1,4 +1,4 @@
-package com.jmoicano.desafiopicpay.api.creditcard
+package com.jmoicano.desafiopicpay.api.creditcard.models
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

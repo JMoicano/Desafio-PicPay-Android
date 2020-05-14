@@ -3,11 +3,12 @@ package com.jmoicano.desafiopicpay.app.creditcard.activities
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.inputmethod.EditorInfo
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import androidx.databinding.DataBindingUtil
 import com.jmoicano.desafiopicpay.R
-import com.jmoicano.desafiopicpay.api.creditcard.CreditCard
+import com.jmoicano.desafiopicpay.api.creditcard.models.CreditCard
 import com.jmoicano.desafiopicpay.api.user.models.User
 import com.jmoicano.desafiopicpay.app.creditcard.viewmodels.EditCreditCardViewModel
 import com.jmoicano.desafiopicpay.app.creditcard.textmasks.CreditCardTextMask
@@ -66,6 +67,14 @@ class EditCreditCardActivity : AppCompatActivity() {
             contact?.let { contact ->
                     startPayment(contact, viewModel.getCreditCard())
             }
+        }
+        binding.editCreditCardCvvField.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE &&
+                    viewModel.buttonVisible.value == true) {
+                binding.editCreditCardButton.callOnClick()
+                return@setOnEditorActionListener true
+            }
+            return@setOnEditorActionListener false
         }
     }
 

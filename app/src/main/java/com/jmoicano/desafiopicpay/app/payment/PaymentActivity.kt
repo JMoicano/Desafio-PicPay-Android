@@ -6,9 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.jmoicano.desafiopicpay.R
-import com.jmoicano.desafiopicpay.api.creditcard.CreditCard
+import com.jmoicano.desafiopicpay.api.creditcard.models.CreditCard
 import com.jmoicano.desafiopicpay.api.user.models.User
 import com.jmoicano.desafiopicpay.databinding.ActivityPaymentBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PaymentActivity : AppCompatActivity() {
 
@@ -34,6 +35,8 @@ class PaymentActivity : AppCompatActivity() {
         intent.getParcelableExtra<CreditCard>(CREDIT_CARD_EXTRA)
     }
 
+    private val viewModel: PaymentViewModel by viewModel()
+
     private val binding by lazy {
         DataBindingUtil.setContentView<ActivityPaymentBinding>(
             this,
@@ -43,7 +46,10 @@ class PaymentActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        creditCard?.let { viewModel.setCreditCard(it) }
+        contact?.let { viewModel.setDestinationUser(it) }
         binding.lifecycleOwner = this
+        binding.viewModel = viewModel
         setupToolbar()
     }
 

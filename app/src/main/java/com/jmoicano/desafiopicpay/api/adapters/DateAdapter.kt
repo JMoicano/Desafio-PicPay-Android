@@ -15,7 +15,7 @@ class DateAdapter {
         return try {
             dateFormat.format(date)
         } catch (exception: ParseException) {
-            Log.e("DateAdapter", exception.message)
+            exception.message?.let { Log.e("DateAdapter", it) }
             ""
         }
     }
