@@ -12,9 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".app.creditcard.activities.EditCreditCardActivity"
+        <activity android:name=".app.payment.PaymentActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".app.creditcard.activities.EditCreditCardActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".app.creditcard.activities.CreditCardPrimingActivity"
             android:theme="@style/AppTheme.NoActionBar" />

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        tools:context="com.jmoicano.desafiopicpay.app.payment.PaymentActivity">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/paymentToolbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_back" />
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/paymentButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/paymentAvatar"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="100dp"
+                    android:contentDescription="@string/contact_avatar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/avatar" />
+
+                <TextView
+                    android:id="@+id/paymentUsername"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@{}"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/paymentAvatar"
+                    tools:text="\@zelda.williams" />
+
+                <TextView
+                    android:id="@+id/paymentMonetaryIndication"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    android:text="@string/payment_monetary_indication"
+                    android:textColor="@drawable/monetary_text_color"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/paymentValue"
+                    app:layout_constraintEnd_toStartOf="@id/paymentValue"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/paymentValue" />
+
+                <EditText
+                    android:id="@+id/paymentValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="40dp"
+                    android:hint="@string/payment_value_hint"
+                    android:inputType="numberDecimal"
+                    android:background="@null"
+                    android:textSize="54sp"
+                    android:textColor="@drawable/monetary_text_color"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/paymentMonetaryIndication"
+                    app:layout_constraintTop_toBottomOf="@+id/paymentUsername" />
+
+                <TextView
+                    android:id="@+id/paymentCardText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="40dp"
+                    android:layout_marginEnd="2dp"
+                    android:text="@string/payment_card"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/paymentEditLink"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/paymentValue" />
+
+                <TextView
+                    android:id="@+id/paymentEditLink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/payment_edit_link"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="2dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/paymentCardText"
+                    app:layout_constraintTop_toTopOf="@+id/paymentCardText" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <Button
+            android:id="@+id/paymentButton"
+            style="@style/ButtonBase"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="18dp"
+            android:enabled="false"
+            android:text="@string/payment_button_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
