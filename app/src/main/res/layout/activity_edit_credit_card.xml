@@ -7,14 +7,14 @@
 
         <variable
             name="viewModel"
-            type="com.jmoicano.desafiopicpay.app.creditcard.EditCreditCardViewModel" />
+            type="com.jmoicano.desafiopicpay.app.creditcard.viewmodels.EditCreditCardViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorPrimary"
-        tools:context="com.jmoicano.desafiopicpay.app.creditcard.CreditCardPrimingActivity">
+        tools:context="com.jmoicano.desafiopicpay.app.creditcard.activities.CreditCardPrimingActivity">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/editCreditToolbar"
@@ -60,13 +60,15 @@
                     app:layout_constraintTop_toBottomOf="@+id/editCreditCardTextTitle">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editCreditCardNumberField"
                         style="@style/EditTextBase"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="@string/edit_credit_card_number_hint"
                         android:imeOptions="actionNext"
                         android:inputType="number"
-                        android:text="@={viewModel.cardNumber}"
+                        android:digits="01234 56789"
+                        android:maxLength="19"
                         android:textColor="@android:color/white" />
                 </com.google.android.material.textfield.TextInputLayout>
 

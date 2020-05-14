@@ -1,4 +1,4 @@
-package com.jmoicano.desafiopicpay.app.creditcard
+package com.jmoicano.desafiopicpay.app.creditcard.viewmodels
 
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData

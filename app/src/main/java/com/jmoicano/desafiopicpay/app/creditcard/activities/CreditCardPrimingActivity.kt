@@ -1,4 +1,4 @@
-package com.jmoicano.desafiopicpay.app.creditcard
+package com.jmoicano.desafiopicpay.app.creditcard.activities
 
 import android.content.Context
 import android.content.Intent
@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.jmoicano.desafiopicpay.R
 import com.jmoicano.desafiopicpay.api.user.models.User
-import com.jmoicano.desafiopicpay.app.creditcard.EditCreditCardActivity.Companion.startEditCreditCard
+import com.jmoicano.desafiopicpay.app.creditcard.activities.EditCreditCardActivity.Companion.startEditCreditCard
 import kotlinx.android.synthetic.main.activity_credit_card_priming.*
 
 class CreditCardPrimingActivity : AppCompatActivity() {
