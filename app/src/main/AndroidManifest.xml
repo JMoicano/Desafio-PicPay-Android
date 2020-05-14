@@ -3,6 +3,7 @@
     package="com.jmoicano.desafiopicpay">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".app.DesafioPicPayApplication"
         android:icon="@mipmap/ic_launcher"
@@ -11,8 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".app.creditcard.CreditCardPrimingActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".app.creditcard.EditCreditCardActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".app.creditcard.CreditCardPrimingActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".app.contacts.activities.ContactsActivity"
             android:label="@string/title_activity_contacts"

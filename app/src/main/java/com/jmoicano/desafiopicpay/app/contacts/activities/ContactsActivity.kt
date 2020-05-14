@@ -30,6 +30,7 @@ class ContactsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = DataBindingUtil.setContentView<ActivityContactsBinding>(this, R.layout.activity_contacts)
         setSupportActionBar(binding.toolbar)
+        binding.lifecycleOwner = this
         binding.viewModel = viewModel
         setUsersData()
         viewModel.getContacts()

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.jmoicano.desafiopicpay.R
 import com.jmoicano.desafiopicpay.api.user.models.User
+import com.jmoicano.desafiopicpay.app.creditcard.EditCreditCardActivity.Companion.startEditCreditCard
 import kotlinx.android.synthetic.main.activity_credit_card_priming.*
 
 class CreditCardPrimingActivity : AppCompatActivity() {
@@ -41,7 +42,7 @@ class CreditCardPrimingActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         creditCardPrimingCardButton.setOnClickListener {
-            TODO("unimplemneted function")
+            contact?.let { user -> startEditCreditCard(user) }
         }
     }
 
