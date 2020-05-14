@@ -7,7 +7,7 @@ import java.util.*
 
 class DateTextMask(private val date: EditText?) : TextWatcher {
     private var current = ""
-    private val ddmmyyyy = "MMYY"
+    private val mmyy = "MMAA"
     private val cal = Calendar.getInstance()
     override fun onTextChanged(
         s: CharSequence,
@@ -28,19 +28,15 @@ class DateTextMask(private val date: EditText?) : TextWatcher {
             //Fix for pressing delete next to a forward slash
             if (clean == cleanC) sel--
             if (clean.length < 8) {
-                clean = clean + ddmmyyyy.substring(clean.length)
+                clean += mmyy.substring(clean.length)
             } else {
                 //This part makes sure that when we finish entering numbers
                 //the date is correct, fixing it otherwise
                 var mon = clean.substring(0, 2).toInt()
-                var year = clean.substring(2, 4).toInt()
+                val year = clean.substring(2, 4).toInt()
                 mon = if (mon < 1) 1 else if (mon > 12) 12 else mon
                 cal[Calendar.MONTH] = mon - 1
-                year = if (year < 1900) 1900 else if (year > 2100) 2100 else year
                 cal[Calendar.YEAR] = year
-                // ^ first set year for the line below to work correctly
-                //with leap years - otherwise, date e.g. 29/02/2012
-                //would be automatically corrected to 28/02/2012
                 clean = String.format("%02d%02d", mon, year)
             }
             clean = String.format(
