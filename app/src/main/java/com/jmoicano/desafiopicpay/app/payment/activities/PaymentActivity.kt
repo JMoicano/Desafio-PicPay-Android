@@ -5,23 +5,28 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.inputmethod.EditorInfo
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import com.jmoicano.desafiopicpay.R
 import com.jmoicano.desafiopicpay.api.creditcard.models.CreditCard
 import com.jmoicano.desafiopicpay.api.user.models.User
 import com.jmoicano.desafiopicpay.app.creditcard.activities.EditCreditCardActivity.Companion.startEditCreditCard
+import com.jmoicano.desafiopicpay.app.payment.fragments.TransactionFragment
+import com.jmoicano.desafiopicpay.app.payment.fragments.TransactionFragment.Companion.startTransactionFragment
 import com.jmoicano.desafiopicpay.app.payment.viewmodels.PaymentViewModel
 import com.jmoicano.desafiopicpay.app.payment.textmasks.MoneyTextMask
 import com.jmoicano.desafiopicpay.databinding.ActivityPaymentBinding
+import com.jmoicano.desafiopicpay.handlers.ViewState
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PaymentActivity : AppCompatActivity() {
 
-    companion object{
+    companion object {
         val CONTACT_EXTRA = "${PaymentActivity::class.java.simpleName}.contact"
         val CREDIT_CARD_EXTRA = "${PaymentActivity::class.java.simpleName}.creditCard"
 
-        fun Context.startPayment(user: User, creditCard: CreditCard){
+        fun Context.startPayment(user: User, creditCard: CreditCard) {
             val intent = Intent(this, PaymentActivity::class.java)
             val bundle = Bundle()
             bundle.putParcelable(CONTACT_EXTRA, user)
@@ -55,7 +60,6 @@ class PaymentActivity : AppCompatActivity() {
         contact?.let { viewModel.setDestinationUser(it) }
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
-        binding.paymentValue.addTextChangedListener(MoneyTextMask(binding.paymentValue))
         setupToolbar()
     }
 
@@ -67,13 +71,45 @@ class PaymentActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        binding.paymentEditLink.setOnClickListener {_ ->
+        registerClickListeners()
+        setTextWatchers()
+        setObersvers()
+    }
+
+    private fun setObersvers() {
+        viewModel.viewState.observe(this, Observer { state ->
+            if (state is ViewState.Success) {
+                startBottomSheet()
+            } else if (state is ViewState.Error) {
+                Toast.makeText(this, state.message, Toast.LENGTH_LONG).show()
+            }
+        })
+    }
+
+    private fun startBottomSheet() {
+        creditCard?.let { creditCard ->
+            viewModel.transaction.value?.let { transaction ->
+                startTransactionFragment(creditCard, transaction)
+                    .show(
+                        supportFragmentManager,
+                        TransactionFragment.TAG
+                    )
+            }
+        }
+    }
+
+    private fun setTextWatchers() {
+        binding.paymentValue.addTextChangedListener(MoneyTextMask(binding.paymentValue))
+    }
+
+    private fun registerClickListeners() {
+        binding.paymentEditLink.setOnClickListener { _ ->
             contact?.let {
                 startEditCreditCard(it, creditCard)
             }
         }
         binding.paymentButton.setOnClickListener {
-
+            viewModel.pay()
         }
         binding.paymentValue.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE && viewModel.valueFilled.value == true) {
@@ -86,6 +122,20 @@ class PaymentActivity : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
+        unregisterClickListeners()
+        unsetTextWatchers()
+        unsetObervers()
+    }
+
+    private fun unsetObervers() {
+        viewModel.viewState.removeObservers(this)
+    }
+
+    private fun unsetTextWatchers() {
+        binding.paymentValue.addTextChangedListener(null)
+    }
+
+    private fun unregisterClickListeners() {
         binding.paymentEditLink.setOnClickListener(null)
         binding.paymentValue.setOnEditorActionListener(null)
         binding.paymentButton.setOnClickListener(null)

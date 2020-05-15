@@ -25,7 +25,7 @@ fun TextView.money(value: BigDecimal?) {
 }
 
 @BindingAdapter("timestamp")
-fun TextView.timestamp(timestamp: Long){
-    val dateFormat = SimpleDateFormat("dd/MM/yyyy \\à\\s HH:mm", Locale("pt", "BR"))
-    text = dateFormat.format(Date(timestamp))
+fun TextView.timestamp(timestamp: Long?){
+    val dateFormat = SimpleDateFormat("dd/MM/yyyy 'às' HH:mm", Locale("pt", "BR"))
+    text = timestamp?.let { dateFormat.format(Date(it)) }
 }

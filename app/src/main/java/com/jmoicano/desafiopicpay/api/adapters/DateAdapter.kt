@@ -20,4 +20,13 @@ class DateAdapter {
         }
     }
 
+    @FromJson
+    fun fromJson(json: String): Date? {
+        return try {
+            dateFormat.parse(json)
+        } catch (exception: ParseException) {
+            exception.message?.let { Log.e("DateAdapter", it) }
+            null
+        }
+    }
 }

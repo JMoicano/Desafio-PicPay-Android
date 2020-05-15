@@ -32,10 +32,10 @@ class PaymentRepository(
                 ).await()
 
                 if (response.isSuccessful) {
-                    if (response.body()?.success == true) {
-                        Resource.Success(response.body())
+                    if (response.body()?.transaction?.success == true) {
+                        Resource.Success(response.body()?.transaction)
                     } else {
-                        Resource.Failure<Transaction?>(response.body()?.status)
+                        Resource.Failure<Transaction?>(response.body()?.transaction?.status)
                     }
                 } else {
                     Resource.Failure<Transaction?>(response.errorBody().toString())

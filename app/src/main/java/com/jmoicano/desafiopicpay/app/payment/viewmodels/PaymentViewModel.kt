@@ -10,6 +10,8 @@ import com.jmoicano.desafiopicpay.handlers.ViewState
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.math.BigDecimal
+import java.text.NumberFormat
+import java.util.*
 
 class PaymentViewModel(private val paymentRepository: PaymentRepository) : ViewModel() {
 
@@ -63,7 +65,10 @@ class PaymentViewModel(private val paymentRepository: PaymentRepository) : ViewM
         if (creditCardMutable.value != null && value.value != null && destinationUserMutable.value != null) {
             job = viewModelScope.launch {
                 viewStateMutable.postValue(ViewState.Loading)
-                val bigDecimalValue = BigDecimal(value.value)
+                val valueDouble = value.value?.let{
+                    NumberFormat.getNumberInstance(Locale("pt", "BR")).parse(it)?.toDouble()
+                }?: 0.0
+                val bigDecimalValue = BigDecimal(valueDouble)
                 val destinationUserId = destinationUser.value?.id ?: 0
                 val result = creditCardMutable.value?.let {
                     paymentRepository.pay(
@@ -91,9 +96,9 @@ class PaymentViewModel(private val paymentRepository: PaymentRepository) : ViewM
         }
     }
 
-    private fun handleSuccess(users: Transaction?) {
-        viewStateMutable.postValue(ViewState.Success)
-        transactionMutable.value = users
+    private fun handleSuccess(transactionResult: Transaction?) {
+        transactionMutable.value = transactionResult
+        viewStateMutable.value = ViewState.Success
     }
 
     private fun handleFailure(message: String?) {
