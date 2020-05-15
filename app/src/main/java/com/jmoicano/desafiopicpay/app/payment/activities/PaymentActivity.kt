@@ -1,4 +1,4 @@
-package com.jmoicano.desafiopicpay.app.payment
+package com.jmoicano.desafiopicpay.app.payment.activities
 
 import android.content.Context
 import android.content.Intent
@@ -10,6 +10,7 @@ import com.jmoicano.desafiopicpay.R
 import com.jmoicano.desafiopicpay.api.creditcard.models.CreditCard
 import com.jmoicano.desafiopicpay.api.user.models.User
 import com.jmoicano.desafiopicpay.app.creditcard.activities.EditCreditCardActivity.Companion.startEditCreditCard
+import com.jmoicano.desafiopicpay.app.payment.viewmodels.PaymentViewModel
 import com.jmoicano.desafiopicpay.app.payment.textmasks.MoneyTextMask
 import com.jmoicano.desafiopicpay.databinding.ActivityPaymentBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -71,6 +72,9 @@ class PaymentActivity : AppCompatActivity() {
                 startEditCreditCard(it, creditCard)
             }
         }
+        binding.paymentButton.setOnClickListener {
+
+        }
         binding.paymentValue.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE && viewModel.valueFilled.value == true) {
                 binding.paymentButton.callOnClick()
@@ -84,5 +88,6 @@ class PaymentActivity : AppCompatActivity() {
         super.onStop()
         binding.paymentEditLink.setOnClickListener(null)
         binding.paymentValue.setOnEditorActionListener(null)
+        binding.paymentButton.setOnClickListener(null)
     }
 }

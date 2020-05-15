@@ -6,7 +6,7 @@ import java.math.BigDecimal
 
 data class Transaction(
     @field:Json(name = "id") val id: Int,
-    @field:Json(name = "timestamp") val timestamp: Int,
+    @field:Json(name = "timestamp") val timestamp: Long,
     @field:Json(name = "value") val value: BigDecimal,
     @field:Json(name = "destination_user") val destination_user: User,
     @field:Json(name = "success") val success: Boolean,

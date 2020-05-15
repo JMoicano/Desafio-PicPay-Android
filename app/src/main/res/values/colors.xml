@@ -11,4 +11,8 @@
     <color name="pressedButtonBackgorundColor">#AA11C76F</color>
 
     <color name="hintTextColor">#66FFFFFF</color>
+    <color name="transaction_head_background">#151516</color>
+    <color name="trasaction_separators_color">#3D4451</color>
+    <color name="trasaction_date_text_color">#99FFFFFF</color>
+    <color name="trasaction_id_text_color">#66FFFFFF</color>
 </resources>

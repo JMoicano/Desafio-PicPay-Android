@@ -1,10 +1,11 @@
-package com.jmoicano.desafiopicpay.app.payment
+package com.jmoicano.desafiopicpay.app.payment.viewmodels
 
 import androidx.lifecycle.*
 import com.jmoicano.desafiopicpay.api.creditcard.models.CreditCard
 import com.jmoicano.desafiopicpay.api.model.Resource
 import com.jmoicano.desafiopicpay.api.payment.models.Transaction
 import com.jmoicano.desafiopicpay.api.user.models.User
+import com.jmoicano.desafiopicpay.app.payment.repositories.PaymentRepository
 import com.jmoicano.desafiopicpay.handlers.ViewState
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch

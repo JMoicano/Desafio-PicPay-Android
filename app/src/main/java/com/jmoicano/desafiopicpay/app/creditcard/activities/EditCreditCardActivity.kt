@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.inputmethod.EditorInfo
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
 import androidx.core.widget.doOnTextChanged
 import androidx.databinding.DataBindingUtil
 import com.jmoicano.desafiopicpay.R
@@ -14,7 +13,7 @@ import com.jmoicano.desafiopicpay.api.user.models.User
 import com.jmoicano.desafiopicpay.app.creditcard.textmasks.CreditCardTextMask
 import com.jmoicano.desafiopicpay.app.creditcard.textmasks.DateTextMask
 import com.jmoicano.desafiopicpay.app.creditcard.viewmodels.EditCreditCardViewModel
-import com.jmoicano.desafiopicpay.app.payment.PaymentActivity.Companion.startPayment
+import com.jmoicano.desafiopicpay.app.payment.activities.PaymentActivity.Companion.startPayment
 import com.jmoicano.desafiopicpay.databinding.ActivityEditCreditCardBinding
 import com.jmoicano.desafiopicpay.views.extensions.dateFormat
 import org.koin.androidx.viewmodel.ext.android.viewModel

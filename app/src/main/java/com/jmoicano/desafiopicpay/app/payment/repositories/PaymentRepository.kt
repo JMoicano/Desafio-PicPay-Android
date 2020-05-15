@@ -1,4 +1,4 @@
-package com.jmoicano.desafiopicpay.app.payment
+package com.jmoicano.desafiopicpay.app.payment.repositories
 
 import com.jmoicano.desafiopicpay.api.CoroutineContextProvider
 import com.jmoicano.desafiopicpay.api.creditcard.models.CreditCard

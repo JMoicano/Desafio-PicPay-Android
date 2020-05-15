@@ -27,4 +27,8 @@
     <string name="payment_value_description">Valor</string>
     <string name="payment_card">Mastercard %s •</string>
     <string name="payment_edit_link">EDITAR</string>
+    <string name="transaction_head_text">Recibo</string>
+    <string name="transaction_id">Transação: %d</string>
+    <string name="transaction_total">Total pago</string>
+    <string name="transaction_card">Cartão Master %s</string>
 </resources>

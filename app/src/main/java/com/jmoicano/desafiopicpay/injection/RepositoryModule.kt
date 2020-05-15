@@ -1,7 +1,7 @@
 package com.jmoicano.desafiopicpay.injection
 
 import com.jmoicano.desafiopicpay.app.contacts.repositories.ContactRepository
-import com.jmoicano.desafiopicpay.app.payment.PaymentRepository
+import com.jmoicano.desafiopicpay.app.payment.repositories.PaymentRepository
 import org.koin.dsl.module
 
 val repositoryModule = module {

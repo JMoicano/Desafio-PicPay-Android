@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="transaction"
+            type="com.jmoicano.desafiopicpay.api.payment.models.Transaction" />
+
+        <variable
+            name="payment"
+            type="com.jmoicano.desafiopicpay.api.payment.models.Payment" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:paddingBottom="150dp">
+
+        <LinearLayout
+            android:id="@+id/transactionHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transaction_head_background"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <view
+                android:layout_width="40dp"
+                android:layout_height="3dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/trasaction_head_swipe_bar" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="12dp"
+                android:text="@string/transaction_head_text"
+                android:textColor="@android:color/white"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/trasactionAvatar"
+            circular_image_by_url="@{transaction.destination_user.img}"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/transactionHeader"
+            tools:src="@drawable/avatar" />
+
+        <TextView
+            android:id="@+id/transactionUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@{transaction.destination_user.username}"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/trasactionAvatar"
+            tools:text="\@zelda.williams" />
+
+        <TextView
+            android:id="@+id/transactionTimestamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/trasaction_date_text_color"
+            android:textSize="14sp"
+            timestamp="@{transaction.timestamp}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/transactionUsername"
+            tools:text="15/12/2022 às 16:34" />
+
+        <TextView
+            android:id="@+id/transactionId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{@string/transaction_id(transaction.id)}"
+            android:textColor="@color/trasaction_id_text_color"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/transactionTimestamp"
+            tools:text="@string/transaction_id" />
+
+        <view
+            android:id="@+id/transactionSeparator1"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="25dp"
+            android:background="@color/trasaction_separators_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/transactionId" />
+
+        <TextView
+            android:id="@+id/transactionCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@{@string/transaction_card(payment.number.substring(0, 4))}"
+            android:textColor="@android:color/white"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/transactionSeparator1"
+            app:layout_constraintTop_toBottomOf="@+id/transactionSeparator1"
+            tools:text="@string/transaction_card" />
+
+        <TextView
+            android:id="@+id/transactionCardValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            money="@{transaction.value}"
+            android:layout_marginTop="12dp"
+            android:textColor="@android:color/white"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/transactionSeparator1"
+            app:layout_constraintTop_toBottomOf="@+id/transactionSeparator1"
+            tools:text="R$ 16,90" />
+
+        <view
+            android:id="@+id/transactionSeparator2"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="12dp"
+            android:background="@color/trasaction_separators_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/transactionCard" />
+
+        <TextView
+            android:id="@+id/transactionTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/transaction_total"
+            android:textColor="@android:color/white"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/transactionSeparator2"
+            app:layout_constraintTop_toBottomOf="@+id/transactionSeparator2" />
+
+        <TextView
+            android:id="@+id/transactionTotalValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            money="@{transaction.value}"
+            android:textColor="@android:color/white"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/transactionSeparator2"
+            app:layout_constraintTop_toBottomOf="@+id/transactionSeparator2"
+            tools:text="R$ 16,90" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
