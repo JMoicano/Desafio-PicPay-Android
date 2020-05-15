@@ -81,6 +81,7 @@
                     android:background="@null"
                     android:hint="@string/payment_value_hint"
                     android:text="@={viewModel.value}"
+                    android:imeOptions="actionDone"
                     android:inputType="numberDecimal"
                     android:textColor="@drawable/monetary_text_color"
                     android:textSize="54sp"
