@@ -65,6 +65,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="@string/edit_credit_card_number_hint"
+                        android:text="@={viewModel.cardNumber}"
                         android:imeOptions="actionNext"
                         android:inputType="number"
                         android:digits="01234 56789"
@@ -125,6 +126,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/editCreditCardNameLayout">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editCreditCardCvvField"
                         style="@style/EditTextBase"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"

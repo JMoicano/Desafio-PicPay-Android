@@ -3,7 +3,7 @@ package com.jmoicano.desafiopicpay.app.creditcard.viewmodels
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.jmoicano.desafiopicpay.api.creditcard.CreditCard
+import com.jmoicano.desafiopicpay.api.creditcard.models.CreditCard
 import java.util.*
 
 class EditCreditCardViewModel : ViewModel() {
@@ -43,7 +43,7 @@ class EditCreditCardViewModel : ViewModel() {
         CreditCard(
             cardNumber.value.orEmpty(),
             cardName.value.orEmpty(),
-            date.value?: Date(),
+            date.value ?: Date(),
             cvv.value.orEmpty()
         )
 

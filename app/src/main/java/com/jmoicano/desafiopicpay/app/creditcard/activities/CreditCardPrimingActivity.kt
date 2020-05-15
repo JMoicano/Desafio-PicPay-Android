@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.activity_credit_card_priming.*
 
 class CreditCardPrimingActivity : AppCompatActivity() {
 
-    companion object{
+    companion object {
         val CONTACT_EXTRA = "${CreditCardPrimingActivity::class.java.simpleName}.contact"
 
         fun Context.startCreditCardPriming(user: User){

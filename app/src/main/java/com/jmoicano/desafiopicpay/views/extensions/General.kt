@@ -10,7 +10,7 @@ import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 
-val dateFormat = SimpleDateFormat("MM/yy", Locale.getDefault())
+val dateFormat = SimpleDateFormat("MM/yy", Locale("pt", "BR"))
 
 @BindingAdapter("android:visibility")
 fun View.viewStateLoading(viewState: ViewState?) {

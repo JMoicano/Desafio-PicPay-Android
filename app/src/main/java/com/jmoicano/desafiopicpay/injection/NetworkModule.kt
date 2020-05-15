@@ -3,6 +3,8 @@ package com.jmoicano.desafiopicpay.injection
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.jmoicano.desafiopicpay.BuildConfig
 import com.jmoicano.desafiopicpay.api.adapters.DateAdapter
+import com.jmoicano.desafiopicpay.api.adapters.BigDecimalAdapter
+import com.jmoicano.desafiopicpay.api.payment.PaymentApi
 import com.jmoicano.desafiopicpay.api.user.ContactApi
 import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
@@ -34,8 +36,13 @@ val networkModule = module {
     }
 
     factory {
+        BigDecimalAdapter()
+    }
+
+    factory {
         Moshi.Builder()
             .add(get<DateAdapter>())
+            .add(get<BigDecimalAdapter>())
             .build()
     }
 
@@ -51,6 +58,12 @@ val networkModule = module {
     single <ContactApi> {
         get<Retrofit>().create(
             ContactApi::class.java
+        )
+    }
+
+    single <PaymentApi>{
+        get<Retrofit>().create(
+            PaymentApi::class.java
         )
     }
 }

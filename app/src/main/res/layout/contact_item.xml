@@ -13,6 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:focusable="true"
         android:layout_marginVertical="12dp">
 
         <ImageView
@@ -20,6 +21,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:circular_image_by_url="@{user.img}"
+            android:contentDescription="@null"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="w,1:1"
             app:layout_constraintStart_toStartOf="parent"

@@ -3,27 +3,30 @@ package com.jmoicano.desafiopicpay.app.creditcard.activities
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.inputmethod.EditorInfo
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import androidx.databinding.DataBindingUtil
 import com.jmoicano.desafiopicpay.R
-import com.jmoicano.desafiopicpay.api.creditcard.CreditCard
+import com.jmoicano.desafiopicpay.api.creditcard.models.CreditCard
 import com.jmoicano.desafiopicpay.api.user.models.User
-import com.jmoicano.desafiopicpay.app.creditcard.viewmodels.EditCreditCardViewModel
 import com.jmoicano.desafiopicpay.app.creditcard.textmasks.CreditCardTextMask
 import com.jmoicano.desafiopicpay.app.creditcard.textmasks.DateTextMask
+import com.jmoicano.desafiopicpay.app.creditcard.viewmodels.EditCreditCardViewModel
+import com.jmoicano.desafiopicpay.app.payment.activities.PaymentActivity.Companion.startPayment
 import com.jmoicano.desafiopicpay.databinding.ActivityEditCreditCardBinding
 import com.jmoicano.desafiopicpay.views.extensions.dateFormat
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.ParseException
 
+
 class EditCreditCardActivity : AppCompatActivity() {
 
-    companion object{
+    companion object {
         val CONTACT_EXTRA = "${EditCreditCardActivity::class.java.simpleName}.contact"
         val CREDIT_CARD_EXTRA = "${EditCreditCardActivity::class.java.simpleName}.creditCard"
 
-        fun Context.startEditCreditCard(user: User, creditCard: CreditCard? = null){
+        fun Context.startEditCreditCard(user: User, creditCard: CreditCard? = null) {
             val intent = Intent(this, EditCreditCardActivity::class.java)
             val bundle = Bundle()
             bundle.putParcelable(CONTACT_EXTRA, user)
@@ -59,6 +62,29 @@ class EditCreditCardActivity : AppCompatActivity() {
         setCreditCard()
     }
 
+    override fun onStart() {
+        super.onStart()
+        binding.editCreditCardButton.setOnClickListener {
+            contact?.let { contact ->
+                    startPayment(contact, viewModel.getCreditCard())
+            }
+        }
+        binding.editCreditCardCvvField.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE &&
+                    viewModel.buttonVisible.value == true) {
+                binding.editCreditCardButton.callOnClick()
+                return@setOnEditorActionListener true
+            }
+            return@setOnEditorActionListener false
+        }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        binding.editCreditCardButton.setOnClickListener(null)
+        binding.editCreditCardCvvField.setOnEditorActionListener(null)
+    }
+
     private fun setCreditCard() {
         creditCard?.let {
             viewModel.setCreditCard(it)
@@ -71,7 +97,8 @@ class EditCreditCardActivity : AppCompatActivity() {
             try {
                 if (text?.length == 5)
                     viewModel.date.value = dateFormat.parse(text.toString())
-            } catch (e: ParseException){}
+            } catch (e: ParseException) {
+            }
         }
         binding?.editCreditCardDueDateField?.addTextChangedListener(
             DateTextMask(
